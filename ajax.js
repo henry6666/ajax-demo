@@ -1,21 +1,31 @@
-javascript med ajax
+// JavaScript
+// Vi ska använda AJAX för att hämta innehållet på en hemsida
 
-Vi ska använda ajaz för att hämta innehåll på en hemsida
+// Vad är AJAX? 
+// Det är inte ett fotbollslag...
+// Det är inte ett diskmedel...
+// Det är inte ett programmeringsspråk...
 
-vad är Ajax?
+// ...det är en teknik, en kombination av saker, för att hämta data från URLs
+// AJAX - Asynchronous JavaScript and XML
 
-Ajax är en teknik, en kombination av saker, för att hämta data från URLs
+// Påbörja en hämtning
+var request = new XMLHttpRequest();
 
-Asyncronous Javascript and XML
-
-påbörja en hämtning
-var request = new XMLHttpRequest(req, res);
 request.onreadystatechange = function() {
-  console.log("hej där")
-  
-  // I variabel res (response)  finns de information..
-  console.log("Svaret (response) är" + res.responseText);
-  
+
+
+	console.log("Nånting hände!");
+
+	if(request.readyState == 4 && request.status == 200) {
+      // I variabeln res (response) finns det information...
+      console.log("Svaret (response) är " + request.responseText);
+      
+      // Spara texten i en variabel
+      var data = request.responseText;
+      document.write(data);
+     }
 }
-request.open('GET', 'http://www.google.com');
+
+request.open('GET', 'https://api.spotify.com/v1/users/hello');
 request.send();
